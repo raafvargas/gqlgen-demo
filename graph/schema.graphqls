@@ -1,0 +1,34 @@
+type Character {
+  id: Int!
+  name: String!
+  description: String!
+  comics(offset: Int!, limit: Int!): [Comic!]
+  stories(offset: Int!, limit: Int!): [Story!]
+}
+
+type Story {
+  id: Int!
+  title: String!
+  description: String!
+  comics(offset: Int!, limit: Int!): [Comic!]
+  characters(offset: Int!, limit: Int!): [Character!]
+}
+
+type Comic {
+  id: Int!
+  title: String!
+  description: String!
+  stories(offset: Int!, limit: Int!): [Story!]
+  characters(offset: Int!, limit: Int!): [Character!]
+}
+
+type Query {
+  character(id: Int!): Character!
+  characters(offset: Int!, limit: Int!): [Character!]!
+
+  story(id: Int!): Story!
+  stories(offset: Int!, limit: Int!): [Story!]!
+
+  comic(id: Int!): Comic!
+  comics(offset: Int!, limit: Int!): [Comic!]!
+}
